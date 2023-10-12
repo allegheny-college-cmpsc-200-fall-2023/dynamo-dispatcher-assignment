@@ -1,4 +1,4 @@
-# CMPSC 200: Circuit Scramble
+# CMPSC 200: Dynamo Dispatcher
 
 | Date              |          |
 |:------------------|:---------|
@@ -16,7 +16,9 @@
 
 ## Introduction
 
-### This isn't a democracy
+### Branching out, stacking up, and other meaningless phraseology
+
+But, _very meaningful Assembly instructions_.
 
 #### Adding it up
 
@@ -51,33 +53,6 @@ An example outcome should look like:
 (843909) DYNAMO RELEASED!
 ...
 ```
-
-### Lab: The Sifter
-
-Once we get the rocks, we have to classify them. In our current operation, we collect `LUNAR` and `MARTIAN` rocks; then, we sort them into `HI` and `LOW` quality. Here're the rules:
-
-|Number start (base 16)| Type |
-|:---------------------|:-----|
-|`00`                  |`LUNAR`|
-|`55`                  |`MARTIAN`|
-
-|Number end (base 16)| Quality |
-|:---------------------|:-----|
-|`FF`                  |`HIGH`|
-|`00`                  |`LOW`|
-
-> Hints: 
-> * what are these numbers' decimal equivalents?
-> * how can we get only the first `2` bytes and last `2` bytes alone?
-
-### Assignment "Hacks"
-
-See the `Suggestion` below to challenge yourself to implement a Hack. As always, you are allowed to develop
-your own Hack to satisfy this stretch goal. Place the code for the Hack inline with the code in the corresponding
-file.
-
-In order to recieve credit for the Hack, you must fill out the [hack.md](docs/hack.md) file located in the
-`docs` folder.
 
 ### Changes to files in `.vscode`
 
