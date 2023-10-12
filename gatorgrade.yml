@@ -1,0 +1,120 @@
+- adder/program.S:
+  - description: adder/program.S contains no TODOs
+    category: TODOs
+    check: MatchFileFragment
+    options:
+      fragment: 'TODO'
+      count: 0
+      exact: true
+- adder/program.S:
+  - description: adder/program.S contains BL instruction to add subroutine
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[bl|BL](\s|\t)+add'
+      count: 1
+      exact: true
+- adder/ops.S:
+  - description: adder/program.S contains a PUSH instruction to add LR to stack
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[push|PUSH](\s|\t)+\{LR\}'
+      count: 1
+      exact: true
+- adder/ops.S:
+  - description: adder/program.S contains a POP instruction remove LR from stack to register
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[pop|POP](\s|\t)+\{[r|R][0-7]\}'
+      count: 1
+      exact: true
+- adder/ops.S:
+  - description: adder/program.S contains a BX instruction to return to value from LR
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[bx|BX](\s|\t)+[r|R][0-7]'
+      count: 1
+      exact: true
+- adder/ops.S:
+  - description: adder/ops.S contains no TODOs
+    category: TODOs
+    check: MatchFileFragment
+    options:
+      fragment: 'TODO'
+      count: 0
+      exact: true
+- dynamo/program.S:
+  - description: dynamo/program.S contains no TODOs
+    category: TODOs
+    check: MatchFileFragment
+    options:
+      fragment: 'TODO'
+      count: 0
+      exact: true
+- dynamo/program.S:
+  - description: dynamo/program.S contains BL instruction to dispatch subroutine
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[bl|BL](\s|\t)+dispatch'
+      count: 1
+      exact: true
+- dynamo/dispatch.S:
+  - description: dynamo/dispatch.S contains sufficient PUSH instructions to add values to the stack
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[push|PUSH](\s|\t)+\{[r|R|lr|LR][0-7]\}'
+      count: 2
+      exact: false
+- dynamo/dispatch.S:
+  - description: dynamo/dispatch.S contains sufficient POP instructions to add values to the stack
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[pop|POP](\s|\t)+\{[r|R][0-7]\}'
+      count: 2
+      exact: false
+- dynamo/dispatch.S:
+  - description: dynamo/dispatch.S uses LSR to shift a register incrementally
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[lsr|LSR](\s|\t)+[r|R][0-7],(\s)?[r|R][0-7],(\s)?#[0-9]'
+      count: 1
+      exact: false
+- dynamo/dispatch.S:
+  - description: dynamo/dispatch.S uses adequate BX instructions to branch to appropriate loops
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[bx|BX](\s|\t)+[a-zA-Z0-9_]+'
+      count: 2
+      exact: false
+- dynamo/dispatch.S:
+  - description: dynamo/dispatch.S uses CMP instructions to evaluate conditional logic
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[cmp|CMP](\s|\t)+[r|R][0-7],(\s)+[rR0-7#]'
+      count: 2
+      exact: false
+- dynamo/dispatch.S:
+  - description: dynamo/dispatch.S uses traditional branching instructions to branch on logic
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[b|B][lt|LT|GT|gt|NE|ne|EQ|eq](\s|\t)+[a-zA-Z0-9_]+'
+      count: 2
+      exact: false
+- dynamo/dispatch.S:
+  - description: dynamo/dispatch.S contains no TODOs
+    category: TODOs
+    check: MatchFileFragment
+    options:
+      fragment: 'TODO'
+      count: 0
+      exact: true
