@@ -72,6 +72,8 @@ Once we get the rocks, we have to classify them. In our current operation, we co
 > * what are these numbers' decimal equivalents?
 > * how can we get only the first `2` bytes and last `2` bytes alone?
 
+**Note**: The portion of our format string `0x%08x` indicates that we want to print an 8-digit hexadecimal number.
+
 ### Assignment "Hacks"
 
 See the `Suggestion` below to challenge yourself to implement a Hack. As always, you are allowed to develop
@@ -86,17 +88,42 @@ In order to recieve credit for the Hack, you must fill out the [hack.md](docs/ha
 Negative values denote _very dangerous_ space junk. We have a blaster to demolish it, but it needs some work. However, we're really only concerned
 about negative values above _20 bits_. Anything else will just bounce off our station's force field.
 
-**Note: you will need to use a new _signed number opcode_: `LDRSW`, which loads a _signed word_.**
+**Note: `WORD`s function a bit different than `BYTES` here; negative values will automatically appear as the correct sign.**
 
-```
+Replace the `signals` portion of the `.data` section with the following:
 
+```assembly
+.data
+    signals:        .word       -966081, 475877, 219889, 275073, 753047 
+                    .word       507159, 284406, 537691, 38249, -53059
+                    .word       181407, 336722, 345502, 166471, -686535
+                    .word       452779, 465214, 843909, 286891, 979596
+                    .word       370365, 527254, 355151, 273454, -981076
+                    .word       904705, 416301, 786009, 760676, 877459
+                    .word       91279, 346450, 579616, 740219, 102706
+                    .word       728970, 459071, -893083, 70417, 131406
+                    .word       188263, -833592, 393345, 96850, 969028
+                    .word       583019, 188486, 93105, 830644, -990678
+                    .word       820370, 175851, 438405, 727792, 30969
+                    .word       718193, 172907, 15193, 475440, 732513
+                    .word       -938307, 816167, 103268, 336742, 367860
+                    .word       437173, 765356, 941571, 353088, 743371
+                    .word       302967, 423311, 318643, 923403, 320974
+                    .word       355959, 166521, 771393, 382652, 163116
+                    .word       689999, -828204, 61875, 115982, 49647
+                    .word       891553, 491925, 94807, 177088, 973945
+                    .word       8695, 987054, 656653, 359910, 235998
+                    .word       427535, 516345, 426889, -983363, 544308
 ```
 
 Implement the blaster by replacing the `signals` array in `program.S` with the above and print that we've `blasted` the junk
 using a similar format to our dynamo's dispatch message.
 
-> Hint: you may need to engage with the `NEG` or other instruction; shifting may have unpredictable results!
+Add the following to the `.data` section of `dispatch.s`:
 
+```assembly
+    blasted:    .asciz      "(%d) JUNK BLASTED!\n"
+```
 #### `sifter`
 
 Sometimes, as the saying (and reality) goes, sometimes junk gets lodged in a perfectly good space rock. Here, these scraps are denoted by negative numbers. However, sometimes, they contain technology that we might want to salvage -- especially if the most significant bits are `33`. If we encounter
@@ -106,9 +133,16 @@ a negative-signed sample, and it meets our criteria, we need to print the format
     salvaged:     .asciz      "0x%08x\tSALVAGED."
 ```
 
-Add the above to the `.data` section of the appropriate file.
+Add the above to the `.data` section of the `sifter.S` file.
 
-**Note: you will need to use a new _signed number opcode_: `LDRSW`, which loads a _signed word_.**
+To add our negative numbers, replace the `numbers` entry in `.data` with:
+
+```assembly
+    numbers:    .word   255, 1426063615, 855638271, 0, 1140850943
+                .word   -255, -1426063615, -855638271, 0, -1140850943 
+```
+
+**Note: `WORD`s function a bit different than `BYTES` here; negative values will automatically appear as the correct sign.**
 
 ##### New files
 
