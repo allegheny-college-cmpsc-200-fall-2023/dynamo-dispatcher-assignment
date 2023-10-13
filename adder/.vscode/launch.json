@@ -3,7 +3,7 @@
     "configurations": [
         {   "name": "Pico Debug",
             "device": "RP2040",
-            "gdbPath": "${env:GDB_PATH}",
+            "gdbPath": "gdb-multiarch",
             "cwd": "${workspaceRoot}",
             "executable": "${command:cmake.launchTargetPath}",
             "request": "launch",
@@ -25,7 +25,7 @@
                 "break main",
                 "continue"
             ],
-            "showDevDebugOutput": "parsed"
+            "showDevDebugOutput": "raw"
         }
     ]
 }

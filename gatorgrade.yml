@@ -68,7 +68,7 @@
     check: MatchFileRegex
     options:
       regex: '[push|PUSH](\s|\t)+\{[r|R|lr|LR][0-7]\}'
-      count: 2
+      count: 3
       exact: false
 - dynamo/dispatch.S:
   - description: dynamo/dispatch.S contains sufficient POP instructions to add values to the stack
@@ -76,7 +76,7 @@
     check: MatchFileRegex
     options:
       regex: '[pop|POP](\s|\t)+\{[r|R][0-7]\}'
-      count: 2
+      count: 3
       exact: false
 - dynamo/dispatch.S:
   - description: dynamo/dispatch.S uses LSR to shift a register incrementally
@@ -92,7 +92,7 @@
     check: MatchFileRegex
     options:
       regex: '[bx|BX](\s|\t)+[a-zA-Z0-9_]+'
-      count: 2
+      count: 6
       exact: false
 - dynamo/dispatch.S:
   - description: dynamo/dispatch.S uses CMP instructions to evaluate conditional logic
@@ -114,6 +114,14 @@
   - description: dynamo/dispatch.S contains no TODOs
     category: TODOs
     check: MatchFileFragment
+    options:
+      fragment: 'TODO'
+      count: 0
+      exact: true
+- docs/report.md:
+  - description: docs/report.md contains no TODOs
+    check: MatchFileFragment
+    category: TODOs
     options:
       fragment: 'TODO'
       count: 0

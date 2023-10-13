@@ -5,9 +5,11 @@ main:
     BL  stdio_init_all
     LDR R4, =a
     LDR R5, =b
-    @ TODO: Branch to appropriate label in ops.S
+    BL  add             @ JUMP TO add; STORE CURRENT LOCATION
+                        @ OF PROGRAM TO LR
     LDR R0, =finish
     MOV R1, R6
+    BKPT
     BL  printf
 
 rest:
