@@ -14,7 +14,7 @@ dispatch:
     @ TODO: Load release format string
     BL      printf
     @ TODO: POP the value from the link register to lo register
-    @ TODO: Branch and eXecute (BX) to location POP'd above
+    @ TODO: Branch and eXecute to location POP'd above
 
 get_msb:
     @ TODO: Evaluate if number is 0
@@ -32,7 +32,7 @@ return_to_launcher:
     @ TODO: Finish this label's functionality to return to the main
     @       loop (i.e. the launcher) in order to grab the next number
     @       from the array (it's 2 instructions)
-    @ HINT: This will likely require POP'ing a value and then BX to glo
+    @ HINT: This will likely require POP'ing a value and then branch and eXecute
     @       back to the original location; keep track of these values in the
     @       stack on paper -- it's the only way
 .data

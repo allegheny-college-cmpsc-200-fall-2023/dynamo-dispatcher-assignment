@@ -92,7 +92,7 @@
     check: MatchFileRegex
     options:
       regex: '[bx|BX](\s|\t)+[a-zA-Z0-9_]+'
-      count: 6
+      count: 5
       exact: false
 - dynamo/dispatch.S:
   - description: dynamo/dispatch.S uses CMP instructions to evaluate conditional logic
@@ -118,6 +118,70 @@
       fragment: 'TODO'
       count: 0
       exact: true
+- sifter/program.S:
+  - description: sifter/program.S branches and links to sifter
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[bl|BL](\s|\t)+sifter'
+      count: 1
+      exact: true
+- sifter/sifter.S:
+  - description: sifter/sifter.S POPs from the stack
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[pop|POP](\s|\t)+\{'
+      count: 1
+      exact: false
+- sifter/sifter.S:
+  - description: sifter/sifter.S PUSHes from the stack
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[push|PUSH](\s|\t)+\{'
+      count: 1
+      exact: false
+- sifter/sifter.S:
+  - description: sifter/sifter.S uses BX to jump to appropriate point
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: '[bx|BX](\s|\t)+[a-zA-Z0-9]+'
+      count: 1
+      exact: false
+- sifter/sifter.S:
+  - description: sifter/sifter.S contains no TODOs
+    category: TODOs
+    check: MatchFileFragment
+    options:
+      fragment: 'TODO'
+      count: 0
+      exact: true
+- sifter/program.S:
+  - description: sifter/program.S contains no TODOs
+    category: TODOs
+    check: MatchFileFragment
+    options:
+      fragment: 'TODO'
+      count: 0
+      exact: true
+- sifter/sifter.S:
+  - description: sifter/sifter.S compares values to branch appropriately
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: 'CMP(\s|\t)+[r|R][0-7],(\s)+[r|R][0-7]'
+      count: 0
+      exact: true
+- sifter/sifter.S:
+  - description: sifter/sifter.S compares uses branch and link to return to appropriate point in previous subroutine
+    category: ARMv6 Assembly
+    check: MatchFileRegex
+    options:
+      regex: 'BL(\s|\t)+[a-zA-z0-9]+'
+      count: 3
+      exact: false
 - docs/report.md:
   - description: docs/report.md contains no TODOs
     check: MatchFileFragment
