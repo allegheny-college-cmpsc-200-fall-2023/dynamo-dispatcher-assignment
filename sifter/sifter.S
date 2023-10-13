@@ -15,6 +15,7 @@ determine_type:
     @ TODO: Prepare stack frame for determine_type
     @ TODO: Shift appropriate direction(s) to get the type bits
     @ TODO: Compare and branch to appropriate typing branches
+    @ TODO: If it matches neither, send back to get next number
 
 is_lunar_type:
     LDR     R2, =lunar
